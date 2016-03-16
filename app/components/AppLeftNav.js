@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
 import {
   Spacing,
   Typography,
 } from 'material-ui/lib/styles';
-import {cyan500} from 'material-ui/lib/styles/colors';
+import { cyan500 } from 'material-ui/lib/styles/colors';
 
 import LeftNav from 'material-ui/lib/left-nav';
 import MenuItem from 'material-ui/lib/menus/menu-item';

@@ -15,31 +15,40 @@ import styles from './Document.css';
 
 export default class Document extends Component {
   static propTypes = {
-    document: PropTypes.object
+    document: PropTypes.string.isRequired
   };
 
+  documentLabels(labels) {
+    const documentLabels = labels.map(label =>
+      <Label
+        label={label}
+        backgroundColor={cyan500}
+        hoverColor={cyan400}
+      />
+    );
+
+    if (documentLabels.length) {
+      return (
+        <CardActions>{documentLabels}</CardActions>
+      );
+    }
+  }
+
   render() {
-    // const doc = this.props.document;
     const inlineStyle = {
       marginRight: Spacing.desktopGutter,
       marginBottom: Spacing.desktopGutter
     };
+
+    const labels = [];
 
     return (
       <Card className={styles.container} style={inlineStyle}>
         <CardMedia>
           <img src="http://placehold.it/120x120" />
         </CardMedia>
-        <CardText>
-        Test
-        </CardText>
-        <CardActions>
-          <Label
-            label="Label"
-            backgroundColor={cyan500}
-            hoverColor={cyan400}
-          />
-        </CardActions>
+        <CardText>{this.props.document}</CardText>
+        {this.documentLabels(labels)}
       </Card>
     );
   }

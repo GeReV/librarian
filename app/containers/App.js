@@ -17,13 +17,20 @@ export default class App extends Component {
     })();
 
     const styles = {
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh'
+      },
       content: {
-        paddingLeft: 256
+        flex: '1 1 auto',
+        paddingLeft: 256,
+        overflow: 'auto'
       }
     };
 
     return (
-      <div>
+      <div style={styles.root}>
         <AppBar
           title="Librarian"
           showMenuIconButton={false}

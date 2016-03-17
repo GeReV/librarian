@@ -1,0 +1,9 @@
+@import "~react-toolbox/components/base";
+
+.root {
+  @include shadow-2dp();
+
+  flex: 0 0 $navigation-width;
+  padding-top: 6.4rem;
+  z-index: 90;
+}

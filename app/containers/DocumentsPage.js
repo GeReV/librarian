@@ -3,11 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as FilesActions from '../actions/files';
 
-import { Spacing } from 'material-ui/lib/styles';
-
 import DocumentGrid from '../components/DocumentGrid.js';
 
-import styles from './DocumentsPage.css';
+import styles from './DocumentsPage.scss';
 
 function mapStateToProps(state) {
   return state.files;
@@ -25,15 +23,12 @@ class DocumentsPage extends Component {
   };
 
   componentDidMount() {
+    this.props.fetchFiles('/home/amir/Pictures');
   }
 
   render() {
-    const containerStyle = {
-      padding: Spacing.desktopGutter
-    };
-
     return (
-      <div className={styles.container} style={containerStyle}>
+      <div className={styles.root}>
         <DocumentGrid {...this.props} />
       </div>
     );

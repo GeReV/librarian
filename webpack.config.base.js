@@ -14,8 +14,11 @@ module.exports = {
       loader: 'json-loader'
     }, {
       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'file-loader?name=assets/fonts/[name].[ext]'
+      loader: 'url-loader?limit=100000'
     }]
+  },
+  toolbox: {
+    theme: 'app/app.theme.scss'
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -23,7 +26,7 @@ module.exports = {
     libraryTarget: 'commonjs2'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.jsx', '.js', '.scss', '.json'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
   },
   plugins: [

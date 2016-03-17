@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import Document from './Document.js';
 
-import styles from './DocumentGrid.css';
+import styles from './DocumentGrid.scss';
 
 export default class DocumentGrid extends Component {
   static propTypes = {
@@ -13,7 +13,7 @@ export default class DocumentGrid extends Component {
     const documents = this.props.files || [];
 
     return (
-      <div className={styles.container}>
+      <div className={styles.root}>
         {
           documents.map(doc => <Document key={`doc-${doc}`} document={doc} />)
         }

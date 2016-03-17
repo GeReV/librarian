@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import AppBar from 'material-ui/lib/app-bar';
+import ToolboxApp from 'react-toolbox/lib/app';
+import AppBar from 'react-toolbox/lib/app_bar';
 
 import AppLeftNav from '../components/AppLeftNav.js';
+
+import styles from './App.scss';
 
 export default class App extends Component {
   static propTypes = {
@@ -16,33 +19,19 @@ export default class App extends Component {
       }
     })();
 
-    const styles = {
-      root: {
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh'
-      },
-      content: {
-        flex: '1 1 auto',
-        paddingLeft: 256,
-        overflow: 'auto'
-      }
-    };
-
     return (
-      <div style={styles.root}>
-        <AppBar
-          title="Librarian"
-          showMenuIconButton={false}
-          style={{ zIndex: 0 }}
-          zDepth={0}
-        />
-        <AppLeftNav />
-        <div style={styles.content}>
-          {this.props.children}
+      <ToolboxApp>
+        <div className={styles.root}>
+          <AppBar fixed flat>
+            <h5>Librarian</h5>
+          </AppBar>
+          <AppLeftNav />
+          <div className={styles.content}>
+            {this.props.children}
+          </div>
+          {devTools}
         </div>
-        {devTools}
-      </div>
+      </ToolboxApp>
     );
   }
 }

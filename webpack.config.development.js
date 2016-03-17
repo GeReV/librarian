@@ -2,6 +2,7 @@
 'use strict';
 
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
 const baseConfig = require('./webpack.config.base');
 
@@ -20,19 +21,12 @@ config.entry = [
 config.output.publicPath = 'http://localhost:3000/dist/';
 
 config.module.loaders.push({
-  test: /\.global\.css$/,
-  loaders: [
-    'style-loader',
-    'css-loader?sourceMap'
-  ]
-}, {
-  test: /^((?!\.global).)*\.css$/,
-  loaders: [
-    'style-loader',
-    'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-  ]
+  test: /\.s?css$/,
+  loader: ExtractTextPlugin.extract(
+    'style',
+    'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass!toolbox'
+  )
 });
-
 
 config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
@@ -42,7 +36,8 @@ config.plugins.push(
     'process.env': {
       NODE_ENV: JSON.stringify('development')
     }
-  })
+  }),
+  new ExtractTextPlugin('style.css', { allChunks: true })
 );
 
 config.target = webpackTargetElectronRenderer(config);

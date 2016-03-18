@@ -1,9 +1,9 @@
-import { combineReducers } from 'redux';
-import { routerReducer as routing } from 'react-router-redux';
-import files from './files';
+import { combineReducers } from 'redux-immutable';
+import routing from './routing';
+import documents from './documents';
 
 const rootReducer = combineReducers({
-  files,
+  documents,
   routing
 });
 

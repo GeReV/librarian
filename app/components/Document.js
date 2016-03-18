@@ -8,7 +8,7 @@ import styles from './Document.scss';
 
 export default class Document extends Component {
   static propTypes = {
-    document: PropTypes.string.isRequired
+    document: PropTypes.object.isRequired
   };
 
   documentLabels(labels) {
@@ -32,7 +32,7 @@ export default class Document extends Component {
           aspectRatio="square"
           image="http://placehold.it/120x120"
         />
-        <CardText>{this.props.document}</CardText>
+      <CardText>{this.props.document.get('title')}</CardText>
         {this.documentLabels(labels)}
       </Card>
     );

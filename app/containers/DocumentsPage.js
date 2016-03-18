@@ -1,35 +1,40 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as FilesActions from '../actions/files';
+import { Button } from 'react-toolbox/lib/button';
+import * as DocumentActions from '../actions/documents';
 
 import DocumentGrid from '../components/DocumentGrid.js';
 
 import styles from './DocumentsPage.scss';
 
 function mapStateToProps(state) {
-  return state.files;
+  return {
+    documents: state.get('documents').toList()
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(FilesActions, dispatch);
+  return bindActionCreators(DocumentActions, dispatch);
 }
 
 class DocumentsPage extends Component {
   static propTypes = {
     style: PropTypes.object,
-    files: PropTypes.array.isRequired,
-    fetchFiles: PropTypes.func.isRequired
+    documents: PropTypes.object.isRequired,
+    fetchDocuments: PropTypes.func.isRequired,
+    insertDocument: PropTypes.func.isRequired
   };
 
   componentDidMount() {
-    this.props.fetchFiles('/home/amir/Pictures');
+    this.props.fetchDocuments('/home/amir/Pictures');
   }
 
   render() {
     return (
       <div className={styles.root}>
         <DocumentGrid {...this.props} />
+        <Button icon="add" floating accent onClick={() => this.props.insertDocument('test')} />
       </div>
     );
   }

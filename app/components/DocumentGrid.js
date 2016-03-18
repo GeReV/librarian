@@ -6,16 +6,16 @@ import styles from './DocumentGrid.scss';
 
 export default class DocumentGrid extends Component {
   static propTypes = {
-    files: PropTypes.array
+    documents: PropTypes.object
   };
 
   render() {
-    const documents = this.props.files || [];
+    const documents = this.props.documents || [];
 
     return (
       <div className={styles.root}>
         {
-          documents.map(doc => <Document key={`doc-${doc}`} document={doc} />)
+          documents.map(doc => <Document key={`doc-${doc.get('_id')}`} document={doc} />)
         }
       </div>
     );

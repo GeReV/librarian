@@ -12,7 +12,9 @@ import './app.global.scss';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 const store = configureStore();
-const history = syncHistoryWithStore(hashHistory, store);
+const history = syncHistoryWithStore(hashHistory, store, {
+  selectLocationState: state => state.get('routing')
+});
 
 injectTapEventPlugin();
 

@@ -1,7 +1,7 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
-  "version": "0.8.0",
+  "name": "librarian",
+  "productName": "Librarian",
+  "version": "0.0.1",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "main": "main.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "start-hot": "cross-env HOT=1 NODE_ENV=development electron ./",
     "package": "cross-env NODE_ENV=production node package.js",
     "package-all": "npm run package -- --all",
-    "postinstall": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
+    "postinstall": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json; cd node_modules/leveldown && HOME=~/.electron-gyp node-gyp rebuild --target=0.36.11 --arch=x64 --dist-url=https://atom.io/download/atom-shell",
     "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\""
   },
   "bin": {
@@ -64,7 +64,7 @@
     "css-loader": "^0.23.1",
     "del": "^2.0.1",
     "electron-packager": "^5.2.0",
-    "electron-prebuilt": "^0.36.9",
+    "electron-prebuilt": "^0.36.11",
     "electron-rebuild": "^1.0.0",
     "eslint": "~2.2.0",
     "eslint-config-airbnb": "^6.0.2",
@@ -99,9 +99,13 @@
     "css-modules-require-hook": "^3.0.0",
     "electron-debug": "^0.5.2",
     "font-awesome": "^4.4.0",
+    "immutable": "^3.7.6",
     "keymirror": "^0.1.1",
+    "material-design-icons": "^2.2.2",
     "normalize.css": "^3.0.3",
     "postcss": "^5.0.18",
+    "pouch-redux-middleware": "^0.1.0",
+    "pouchdb": "^5.3.1",
     "react": "^0.14.2",
     "react-addons-css-transition-group": "^0.14.7",
     "react-dom": "^0.14.2",
@@ -111,6 +115,7 @@
     "react-tap-event-plugin": "^0.2.2",
     "react-toolbox": "^0.14.2",
     "redux": "^3.2.1",
+    "redux-immutable": "^3.0.6",
     "redux-promise": "^0.5.0",
     "redux-thunk": "^1.0.2"
   },

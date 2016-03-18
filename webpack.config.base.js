@@ -13,9 +13,12 @@ module.exports = {
       test: /\.json$/,
       loader: 'json-loader'
     }, {
-      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'url-loader?limit=100000'
-    }]
+      test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'url-loader?limit=100000&name=[name]-[hash].[ext]'
+    }],
+    // https://github.com/webpack/webpack/issues/138
+    // https://github.com/pouchdb/pouchdb/issues/3647
+    noParse: /node_modules\/json-schema\/lib\/validate\.js|lie\.js$|\/leveldown\//
   },
   toolbox: {
     theme: 'app/app.theme.scss'
@@ -33,7 +36,6 @@ module.exports = {
 
   ],
   externals: [
-    // put your node 3rd party libraries which can't be built with webpack here
-    // (mysql, mongodb, and so on..)
+    'pouchdb'
   ]
 };

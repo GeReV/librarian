@@ -1,13 +1,43 @@
+@import "~react-toolbox/components/base";
+
 .root {
   display: flex;
   align-items: stretch;
   flex-direction: row;
   height: 100vh;
+
+  &:not(.with-import) {
+   > .import {
+     transform: translateX(100%);
+   }
+   > .content {
+     padding-right: 0;
+   }
+   > .navigation {
+     transform: translateX(0);
+   }
+ }
+ &.with-import {
+   > .import {
+     transform: translateY(0);
+   }
+   > .content {
+     padding-right: 50%;
+   }
+   > .navigation {
+     transform: translateX(- 100%);
+   }
+ }
 }
+
+.import {}
+
+.navigation {}
 
 .content {
   display: flex;
   flex: 1 1 auto;
-  padding-top: 6.4rem;
+  padding-top: $appbar-height;
   overflow: auto;
+  transition: padding $animation-duration $animation-curve-default;
 }

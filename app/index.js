@@ -1,3 +1,4 @@
+import remote from 'remote';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -6,10 +7,18 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import routes from './routes';
 import configureStore from './store/configureStore';
 
+import usbDetect from 'usb-detection';
+
 import 'react-toolbox/components/commons.scss';
 import './app.global.scss';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
+const win = remote.getCurrentWindow();
+
+win.on('close', () => {
+  usbDetect.stopMonitoring();
+});
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store, {

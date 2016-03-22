@@ -36,6 +36,7 @@ module.exports = {
 
   ],
   externals: [
-    'pouchdb'
+    'pouchdb',
+    'usb-detection'
   ]
 };

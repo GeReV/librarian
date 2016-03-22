@@ -1,0 +1,29 @@
+@import "~react-toolbox/components/base";
+
+.root {
+  @include shadow-2dp();
+
+  background: $color-background;
+  overflow: hidden;
+  transition: transform $animation-duration $animation-curve-default;
+  position: fixed;
+  top: $appbar-height;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: $z-index-high;
+}
+
+.toolbar {
+  background: $palette-grey-300;
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons {
+  flex: 1 0 auto;
+}
+
+.close {
+
+}

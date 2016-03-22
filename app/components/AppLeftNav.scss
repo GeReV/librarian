@@ -4,6 +4,6 @@
   @include shadow-2dp();
 
   flex: 0 0 $navigation-width;
-  padding-top: 6.4rem;
+  padding-top: $appbar-height;
   z-index: 90;
 }

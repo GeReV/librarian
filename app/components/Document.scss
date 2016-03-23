@@ -1,5 +1,20 @@
+@import "~react-toolbox/components/base";
+
 .root {
   flex: 0 0 14rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  transition-property: box-shadow background;
+  transition-duration: $animation-duration;
+  transition-timing-function: $animation-curve-default;
+}
+
+.selected {
+  background: $palette-indigo-50;
+}
+
+.title > p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

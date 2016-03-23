@@ -37,7 +37,7 @@ export default class App extends Component {
       <ToolboxApp>
         <div
           className={className}
-          onClick={() => this.setState({ withImport: !this.state.withImport })}
+          onTouchTap={() => this.setState({ withImport: true })}
         >
           <AppBar fixed flat>
             <h5>Librarian</h5>
@@ -46,7 +46,10 @@ export default class App extends Component {
           <div className={styles.content}>
             {this.props.children}
           </div>
-          <ImportDocuments className={styles.import} />
+          <ImportDocuments
+            className={styles.import}
+            onClose={() => this.setState({ withImport: false })}
+          />
           {devTools}
         </div>
       </ToolboxApp>

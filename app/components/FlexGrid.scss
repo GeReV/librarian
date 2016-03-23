@@ -1,0 +1,14 @@
+@import "~react-toolbox/lib/base";
+
+.root {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: $unit;
+
+  > * {
+    flex: 0 0 16rem;
+    margin-right: $unit;
+    margin-bottom: $unit;
+  }
+}

@@ -3,7 +3,10 @@
 .root {
   @include shadow-2dp();
 
-  flex: 0 0 $navigation-width;
-  padding-top: $appbar-height;
+  position: fixed;
+  top: $appbar-height;
+  left: 0;
+  bottom: 0;
+  width: $navigation-width;
   z-index: 90;
 }

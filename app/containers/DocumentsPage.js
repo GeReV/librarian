@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Button } from 'react-toolbox/lib/button';
 import * as DocumentActions from '../actions/documents';
 
-import DocumentGrid from '../components/DocumentGrid.js';
+import FlexGrid from '../components/FlexGrid.js';
 
 import styles from './DocumentsPage.scss';
 
@@ -31,9 +31,13 @@ class DocumentsPage extends Component {
   }
 
   render() {
+    const documents = this.props.documents || [];
+
     return (
       <div className={styles.root}>
-        <DocumentGrid {...this.props} />
+        <FlexGrid>
+          {documents}
+        </FlexGrid>
         <Button icon="add" floating accent onClick={() => this.props.insertDocument('test')} />
       </div>
     );

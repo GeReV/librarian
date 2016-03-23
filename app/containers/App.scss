@@ -11,6 +11,7 @@
      transform: translateX(100%);
    }
    > .content {
+     padding-left: $navigation-width;
      padding-right: 0;
    }
    > .navigation {
@@ -22,17 +23,20 @@
      transform: translateY(0);
    }
    > .content {
+     padding-left: 0;
      padding-right: 50%;
    }
    > .navigation {
-     transform: translateX(- 100%);
+     transform: translateX(-100%);
    }
  }
 }
 
 .import {}
 
-.navigation {}
+.navigation {
+  transition: transform $animation-duration $animation-curve-default;
+}
 
 .content {
   display: flex;

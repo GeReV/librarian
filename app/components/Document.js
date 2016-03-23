@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import cx from 'classnames';
 
 import { Card, CardMedia, CardText, CardActions } from 'react-toolbox/lib/card';
 
@@ -8,7 +9,12 @@ import styles from './Document.scss';
 
 export default class Document extends Component {
   static propTypes = {
-    document: PropTypes.object.isRequired
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    selected: PropTypes.bool,
+    labels: PropTypes.array,
+    onTouchTap: PropTypes.func
   };
 
   documentLabels(labels) {
@@ -24,15 +30,27 @@ export default class Document extends Component {
   }
 
   render() {
+    const {
+      image,
+      title,
+      selected,
+      className,
+      ...restProps
+    } = this.props;
+
     const labels = [];
 
+    const newClassName = cx(styles.root, className, {
+      [styles.selected]: selected
+    });
+
     return (
-      <Card className={styles.root}>
+      <Card className={newClassName} raised={selected} {...restProps}>
         <CardMedia
           aspectRatio="square"
-          image="http://placehold.it/120x120"
+          image={image || 'http://placehold.it/120x120'}
         />
-      <CardText>{this.props.document.get('title')}</CardText>
+      <CardText className={styles.title} title={title}>{title}</CardText>
         {this.documentLabels(labels)}
       </Card>
     );

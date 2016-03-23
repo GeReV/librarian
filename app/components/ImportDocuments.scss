@@ -3,7 +3,7 @@
 .root {
   @include shadow-2dp();
 
-  background: $color-background;
+  background: $palette-grey-100;
   overflow: hidden;
   transition: transform $animation-duration $animation-curve-default;
   position: fixed;
